@@ -1,110 +1,106 @@
-// ================= HAMBURGER NAVIGATION =================
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.querySelector(".nav-links");
+// ================= HEADER HIDE ON SCROLL =================
+let lastScrollTop = 0;
+const header = document.querySelector('.header');
 
-hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("active");
-  navLinks.classList.toggle("active");
+window.addEventListener('scroll', () => {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if(scrollTop > lastScrollTop){
+        // scrolling down
+        header.style.top = '-80px';
+    } else {
+        // scrolling up
+        header.style.top = '0';
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+});
+
+// ================= HAMBURGER MENU =================
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+// Close nav when link clicked (mobile)
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
 });
 
 // ================= SMOOTH SCROLL =================
-const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
-
-navAnchors.forEach(anchor => {
-  anchor.addEventListener("click", function(e) {
-    e.preventDefault();
-
-    // Close hamburger menu on mobile
-    if(hamburger.classList.contains("active")) {
-      hamburger.classList.remove("active");
-      navLinks.classList.remove("active");
-    }
-
-    const targetID = this.getAttribute("href").substring(1);
-    const targetSection = document.getElementById(targetID);
-
-    targetSection.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e){
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){
+            target.scrollIntoView({behavior:'smooth', block:'start'});
+        }
     });
-  });
 });
 
-// ================= HEADER HIDE/SHOW ON SCROLL =================
-let lastScroll = 0;
-const header = document.querySelector(".header");
-
-window.addEventListener("scroll", () => {
-  const currentScroll = window.pageYOffset;
-
-  if (currentScroll > lastScroll && currentScroll > 100) {
-    header.style.top = "-80px"; // hide header when scrolling down
-  } else {
-    header.style.top = "0"; // show header when scrolling up
-  }
-
-  lastScroll = currentScroll;
-});
-
-// ================= EMAILJS =================
-// Initialize EmailJS
+// ================= EMAILJS FORM SUBMISSION =================
 (function(){
-  emailjs.init("P3nSmfQ-SadKsTTu6"); // Your public key
+    emailjs.init('YOUR_EMAILJS_USER_ID'); // replace with your EmailJS User ID
 })();
 
-// Connect form dual-send (team + auto-reply)
-const connectForm = document.getElementById('connect-form');
+const form = document.getElementById('connect-form');
+const popup = document.getElementById('form-popup');
 
-connectForm.addEventListener('submit', function(e) {
-  e.preventDefault();
+form.addEventListener('submit', function(e){
+    e.preventDefault();
 
-  // Send to portal team
-  emailjs.sendForm('service_etutor', 'template_nleghgr', this)
+    // send email via EmailJS
+    emailjs.sendForm('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID',this)
     .then(() => {
-      console.log("Message sent to team ✅");
-    }, (err) => {
-      console.error("Team message error ❌", err);
-    });
-
-  // Send auto-reply to user
-  emailjs.sendForm('service_etutor', 'template_6p712xg', this)
-    .then(() => {
-      alert("Message sent successfully! ✅ Auto-reply sent to your email.");
-      connectForm.reset(); // clear form
-    }, (err) => {
-      alert("Oops! Something went wrong with auto-reply ❌ " + JSON.stringify(err));
+        showPopup('Message Sent Successfully!');
+        form.reset();
+    }, (error) => {
+        showPopup('Error sending message. Try again.');
+        console.error('EmailJS Error:', error);
     });
 });
 
-// ================= DEVELOPER CAROUSEL SWIPE (MOBILE) =================
-const carousel = document.querySelector('.developer-carousel');
+// ================= POP-UP FUNCTION =================
+function showPopup(message){
+    popup.textContent = message;
+    popup.classList.add('show');
+    setTimeout(() => {
+        popup.classList.remove('show');
+    }, 3000);
+}
+
+// ================= OPTIONAL: DEVELOPER CAROUSEL SWIPE =================
 let isDown = false;
 let startX;
 let scrollLeft;
 
+const carousel = document.querySelector('.developer-carousel');
+
 carousel.addEventListener('mousedown', (e) => {
-  isDown = true;
-  carousel.classList.add('active');
-  startX = e.pageX - carousel.offsetLeft;
-  scrollLeft = carousel.scrollLeft;
+    isDown = true;
+    carousel.classList.add('active');
+    startX = e.pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
 });
 carousel.addEventListener('mouseleave', () => {
-  isDown = false;
-  carousel.classList.remove('active');
+    isDown = false;
+    carousel.classList.remove('active');
 });
 carousel.addEventListener('mouseup', () => {
-  isDown = false;
-  carousel.classList.remove('active');
+    isDown = false;
+    carousel.classList.remove('active');
 });
 carousel.addEventListener('mousemove', (e) => {
-  if(!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - carousel.offsetLeft;
-  const walk = (x - startX) * 2; // scroll-fast
-  carousel.scrollLeft = scrollLeft - walk;
-});
-
-// Touch events for mobile swipe
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - carousel.offsetLeft;
+    const walk = (x - startX) * 2; // scroll-fast
+    carousel.scrollLeft = scrollLeft - walk;
+});// Touch events for mobile swipe
 let touchStartX = 0;
 let touchScrollLeft = 0;
 
