@@ -1,6 +1,6 @@
 /* ================= GLOBAL ================= */
 html, body { margin:0; padding:0; min-height:100vh; display:flex; flex-direction:column; background:#e6f6ff; }
-main { flex:1; }
+main { flex:1; box-sizing:border-box; }
 
 /* ================= HEADER ================= */
 .header { position:fixed; top:0; width:100%; background:#87CEFA; z-index:1000; transition: top 0.3s ease-in-out; }
@@ -18,7 +18,7 @@ main { flex:1; }
 .hamburger.active span:nth-child(3){ transform: rotate(-45deg) translate(5px,-5px); }
 
 /* ================= HERO ================= */
-.hero { position:relative; display:flex; flex-direction:column; justify-content:flex-start; padding:100px 10px 20px 10px; }
+.hero { position:relative; display:flex; flex-direction:column; justify-content:flex-start; padding:100px 10px 20px 10px; width:100%; box-sizing:border-box; }
 .hero-bg-top { width:100%; height:500px; border-radius:15px; overflow:hidden; position:relative; margin-bottom:20px; background:#87CEFA; }
 .hero-bg-top .section-bg { width:100%; height:100%; object-fit:cover; filter:brightness(0.7); }
 .overlay { position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(135,206,250,0.35); border-radius:15px; z-index:2; }
@@ -45,13 +45,13 @@ main { flex:1; }
 .outline:hover { background:#5faee3; color:#ffffff; box-shadow:0 6px 16px rgba(0,0,0,0.25); }
 
 /* ================= ABOUT SECTION ================= */
-.about-section { padding:80px 20px; background:#f0faff; text-align:center;}
+.about-section { padding:80px 20px; background:#f0faff; text-align:center; width:100%; box-sizing:border-box;}
 .about-container { max-width:800px; margin:0 auto; text-align:justify; }
 .about-section h2 { font-size:28px; color:#5faee3; margin-bottom:20px; font-weight:700; }
 .about-section p { font-size:16px; line-height:1.8; color:#333333; margin-bottom:15px; }
 
 /* ================= DEVELOPER SECTION ================= */
-.developer-section { padding:60px 20px; background:#f7fbff; text-align:center; }
+.developer-section { padding:60px 20px; background:#f7fbff; text-align:center; width:100%; box-sizing:border-box; }
 .developer-section h2 { font-size:28px; font-weight:700; color:#5faee3; margin-bottom:10px; }
 .developer-section .dev-description { font-size:16px; color:#333; margin-bottom:30px; text-align:justify; max-width:700px; margin-left:auto; margin-right:auto;}
 .developer-carousel { display:flex; overflow-x:auto; gap:20px; padding-bottom:10px; scroll-behavior:smooth;}
@@ -64,7 +64,7 @@ main { flex:1; }
 .developer-card .btn.outline:hover { background:#5faee3; color:#ffffff; box-shadow:0 6px 16px rgba(0,0,0,0.25);}
 
 /* ================= CONNECT SECTION ================= */
-.connect-section { padding:80px 20px; background:#ffffff; text-align:center;}
+.connect-section { padding:80px 20px; background:#ffffff; text-align:center; width:100%; box-sizing:border-box; }
 .connect-container { max-width:700px; margin:0 auto; text-align:justify;}
 .connect-container h2 { font-size:28px; color:#5faee3; margin-bottom:20px; font-weight:700; text-align:center;}
 .connect-container p { font-size:16px; line-height:1.8; color:#333; margin-bottom:30px;}
@@ -89,35 +89,35 @@ main { flex:1; }
 
 /* ================= MOBILE FIXES ================= */
 @media(max-width:768px){
-  /* Ensure nav and hero use full width */
-  .nav-links { width: 100%; right: -100%; }
-  .hero { padding: 100px 10px 20px 10px; width: 100%; box-sizing: border-box; }
+  /* NAV */
+  .nav-links { width:100%; right:-100%; }
+  .nav-links a { margin-top:12px; font-size:18px; }
+  .hamburger { display:flex; }
   
-  .hero-bg-top { width: 100%; height: auto; border-radius: 15px; overflow: hidden; }
-  .hero-bg-top .section-bg { width: 100%; height: 100%; object-fit: cover; }
-  
+  /* HERO FULL WIDTH FIX */
+  .hero { padding:100px 10px 20px 10px; width:100%; }
+  .hero-bg-top { width:100%; height:auto; }
+  .hero-bg-top .section-bg { width:100%; height:100%; object-fit:cover; }
   .hero-content {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 95%; /* use almost full width */
-    text-align: center;
-    padding: 0 5px; /* reduce horizontal padding */
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    max-width:95%;
+    width:100%;
+    padding:0 5px;
+    text-align:center;
   }
+  .hero-buttons { 
+    flex-direction:column; 
+    align-items:center; 
+    width:100%; 
+    gap:12px; 
+    margin-top:15px; 
+  }
+  .hero-buttons .btn { width:90%; text-align:center; }
+  .hero-logo { width:80px; height:80px; }
+  .school-year { font-size:14px; padding:6px 12px; }
   
-  .hero-buttons {
-    flex-direction: column; /* stack buttons */
-    align-items: center;    /* center horizontally */
-    width: 100%;            /* fill full width */
-    gap: 12px;              /* spacing between buttons */
-    margin-top: 15px;       /* spacing from text/logo */
-  }
-  
-  .hero-buttons .btn {
-    width: 90%;             /* make buttons stretch nicely */
-    text-align: center;
-  }
-
-  .hero-logo { width: 80px; height: 80px; }
-  .school-year { font-size: 14px; padding: 6px 12px; }
-               }
+  /* DEVELOPER SECTION FULL WIDTH */
+  .developer-section, .about-section, .connect-section { padding:60px 10px; width:100%; }
+                      }
