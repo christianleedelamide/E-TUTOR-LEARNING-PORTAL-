@@ -1,0 +1,506 @@
+/* ================= GLOBAL ================= */
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #e6f6ff; /* light sky blue background */
+}
+
+main {
+  flex: 1; /* Push footer to bottom */
+}
+
+/* ================= HEADER ================= */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #87CEFA; /* light sky blue */
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand img {
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.brand-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: #87CEFA; /* Header label skyblue as requested */
+}
+
+/* ================= NAV ================= */
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #b3ecff; /* lighter sky blue on hover */
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 3px;
+  background: #ffffff;
+  transition: 0.4s;
+}
+
+.hamburger.active span:nth-child(1){
+  transform: rotate(45deg) translate(5px,5px);
+}
+
+.hamburger.active span:nth-child(2){
+  opacity:0;
+}
+
+.hamburger.active span:nth-child(3){
+  transform: rotate(-45deg) translate(5px,-5px);
+}
+
+/* ================= HERO ================= */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 100px 10px 20px 10px;
+}
+
+.hero-bg-top {
+  width: 100%;
+  height: 500px; /* fit desktop/mobile */
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
+  background: #87CEFA; /* sky blue */
+}
+
+.hero-bg-top .section-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.overlay {
+  position: absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(135,206,250,0.35); /* semi-transparent overlay */
+  border-radius: 15px;
+  z-index:2;
+}
+
+/* ================= HERO CONTENT CENTERED ================= */
+.hero-content {
+  position: absolute;
+  top: 50%; /* vertical center */
+  left: 50%; /* horizontal center */
+  transform: translate(-50%, -50%); /* perfect centering */
+  z-index: 3;
+  max-width: 700px;
+  text-align: center; /* keep logo centered */
+  color: #ffffff; /* all text white */
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.4);
+}
+
+.hero-content h1 {
+  font-size: 34px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  white-space: nowrap; /* Prevent wrapping of Welcome to E-Tutor Learning Portal */
+}
+
+.hero-content p {
+  font-size:16px;
+  line-height:1.6;
+  margin-bottom:20px;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
+
+.hero-content .school-year {
+  display: block;
+  background: #ffffff;
+  color: #5faee3; /* light sky blue */
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-weight: 600;
+  max-width: fit-content;
+  margin: 0 auto 20px auto; /* center it */
+  box-shadow: 0 4px 10px rgba(95,174,227,0.4);
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+}
+
+/* Logo circular and centered */
+.hero-logo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%; /* circular */
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 15px auto; /* center and spacing below */
+}
+
+/* Main hero logo (front page picture) */
+.hero-logo-main {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute; /* overlaps hero background */
+  bottom: 20px; /* original position */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Fix header and hero logos: remove black background, make white */
+.brand img,
+.hero-logo,
+.hero-logo-main {
+  background-color: #ffffff; /* white background inside the circle */
+  border-radius: 50%; /* keep it circular */
+}
+
+/* Hero buttons */
+.hero-buttons { display:flex; gap:15px; justify-content:center; }
+
+/* Buttons readability */
+.btn { padding:12px 24px; border-radius:25px; text-decoration:none; font-weight:600; transition:0.3s; }
+.primary { background:#ffffff;color:#5faee3; font-weight:700; box-shadow:0 4px 12px rgba(95,174,227,0.25);}
+.primary:hover { background:#5faee3; color:#ffffff; box-shadow:0 6px 16px rgba(0,0,0,0.25);}
+.outline { border:2px solid #ffffff; color:#ffffff; font-weight:700; box-shadow:0 4px 12px rgba(0,0,0,0.25);}
+.outline:hover { background:#5faee3; color:#ffffff; box-shadow:0 6px 16px rgba(0,0,0,0.25);}
+
+/* ================= FOOTER ================= */
+.footer {
+  background:#5faee3; /* light sky blue */
+  color:#e6f6ff;
+  padding:50px 20px;
+  text-align:center;
+}
+
+.footer-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.footer h3,.footer h4 { color:#ffffff; margin-bottom:15px; }
+.footer ul { list-style:none; padding-left:0; }
+.footer ul li { margin-bottom:8px; }
+.footer a { color:#e6f6ff; text-decoration:none; }
+.footer a:hover { color:#ffffff; }
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+  .nav-links{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 220px;
+    flex-direction: column;
+    padding: 80px 20px;
+    background: #87CEFA;
+    transition: right 0.4s cubic-bezier(0.4,0.0,0.2,1);
+    z-index: 1050;
+    overflow: hidden;
+  }
+
+  .nav-links.active{ right: 0; }
+  .hamburger{ display:flex; position: fixed; top: 15px; right: 20px; z-index: 1100; }
+  .nav-links a { margin-top: 12px; font-size: 18px; }
+  .nav-links .login-link { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.3); font-weight: 700; }
+
+  /* Hero adjustments for mobile */
+  .hero-content {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 24px;
+    white-space: nowrap; /* Keep text together */
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  }
+
+  .hero-content p {
+    font-size:14px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  }
+
+  .hero-content .school-year {
+    color: #5faee3; /* Skyblue */
+    padding:6px 16px;
+    font-size:14px;
+    margin-bottom:15px;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+  }
+
+  .hero-logo { width:80px; height:80px; margin-bottom:12px; }
+
+  /* Main hero logo original position on mobile */
+  .hero-logo-main {
+    width: 90px;
+    height: 90px;
+    bottom: 15px; /* original position */
+  }
+
+  .hero-buttons { flex-direction:column; gap:12px; justify-content:center; }
+}
+
+/* ================= HEADER LOGO + LABEL INTEGRATION (ADD ONLY) ================= */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-text {
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .brand { gap: 8px; }
+  .brand-text { font-size: 16px; }
+}
+
+/* ================= ABOUT SECTION ================= */
+.about-section {
+  padding: 80px 20px;
+  background: #f0faff; /* light blue background for section */
+  text-align: center; /* Keep heading centered */
+}
+
+.about-section .about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: justify; /* Make the paragraph text justified */
+}
+
+.about-section h2 {
+  font-size: 28px;
+  color: #5faee3; /* sky blue title */
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center; /* Keep the title centered */
+}
+
+.about-section p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333333;
+  margin-bottom: 15px;
+}
+
+/* ================= CONNECT WITH US SECTION ================= */
+.connect-section {
+  padding: 80px 20px;
+  background: #ffffff; /* white background for contrast */
+  text-align: center; /* Keep heading centered */
+}
+
+.connect-container {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: justify; /* Justify paragraph text */
+}
+
+.connect-container h2 {
+  font-size: 28px;
+  color: #5faee3; /* sky blue title */
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.connect-container p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333333;
+  margin-bottom: 30px;
+}
+
+.connect-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.connect-form input,
+.connect-form textarea {
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.connect-form textarea {
+  resize: vertical;
+}
+
+.connect-form button {
+  width: fit-content;
+  align-self: center;
+  padding: 12px 30px;
+  border-radius: 25px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  background: #5faee3;
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+.connect-form button:hover {
+  background: #3a92d1;
+}
+
+/* ================= DEVELOPER SECTION ================= */
+.developer-section {
+  padding: 60px 20px;
+  background: #f7fbff;
+  text-align: center;
+}
+
+.developer-section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #5faee3;
+  margin-bottom: 10px;
+}
+
+.developer-section .dev-description {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: justify; /* justified text */
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Carousel container */
+.developer-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+/* Hide default scrollbar */
+.developer-carousel::-webkit-scrollbar {
+  display: none;
+}
+.developer-carousel {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Individual developer cards */
+.developer-card {
+  flex: 0 0 auto;
+  width: 150px;
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.developer-card:hover {
+  transform: scale(1.05);
+}
+
+.developer-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.developer-card h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #5faee3;
+}
+
+/* Mobile adjustments */
+@media(max-width:768px){
+  .developer-card { width: 120px; padding: 10px; }
+  .developer-card img { width: 60px; height: 60px; }
+  .developer-section h2 { font-size: 22px; }
+}
+
+.developer-card .btn.outline {
+  color: #5faee3; /* Sky blue text */
+  border: 2px solid #5faee3; /* Match border to text */
+  font-size: 12px;
+  padding: 6px 12px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.developer-card .btn.outline:hover {
+  background: #5faee3;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+/* ================= HEADER SCROLL BEHAVIOR ================= */
+/* Hide header on scroll */
+.header {
+  transition: top 0.3s ease-in-out;
+}
+
+/* Hamburger always visible */
+.hamburger {
+  position: fixed; /* ensure it stays on top */
+  top: 15px;
+  right: 20px;
+  z-index: 1100;
+}
