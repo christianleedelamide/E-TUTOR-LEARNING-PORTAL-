@@ -25,7 +25,7 @@ main { flex:1; }
 
 .hero-content {
   position:absolute;
-  top:15%; /* balanced space from top */
+  top:20%; /* balanced space from top */
   left:50%;
   transform:translateX(-50%);
   z-index:3;
@@ -144,11 +144,17 @@ main { flex:1; }
   .nav-links .login-link { margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.3); font-weight:700; }
 
   /* MOBILE HERO FIX */
-  .hero-content { top:12%; left:50%; transform:translateX(-50%); max-width:90%; text-align:center;}
-  .hero-logo { width:80px; height:80px; margin-bottom:20px; }
-  .school-year { font-size:14px; padding:6px 12px; margin-bottom:18px; }
+  .hero-content {
+    top:10%; /* moves logo down but inside background */
+    left:50%;
+    transform:translateX(-50%);
+    max-width:90%;
+    text-align:center;
+  }
+  .hero-logo { width:80px; height:80px; margin-bottom:18px; }
+  .school-year { font-size:14px; padding:6px 12px; margin-bottom:15px; }
   .hero-content h1 { font-size:22px; line-height:1.2; margin-bottom:12px; }
-  .hero-content p { font-size:14px; line-height:1.5; margin-bottom:20px; }
+  .hero-content p { font-size:14px; line-height:1.5; margin-bottom:18px; }
   .hero-buttons { flex-direction: column; align-items: center; width: 100%; gap: 12px; margin-bottom:15px; }
   .hero-buttons .btn { width:70%; text-align:center; }
-}
+                      }
