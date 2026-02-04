@@ -22,18 +22,9 @@ main { flex:1; }
 .hero-bg-top { width:100%; height:500px; border-radius:15px; overflow:hidden; position:relative; margin-bottom:20px; background:#87CEFA; }
 .hero-bg-top .section-bg { width:100%; height:100%; object-fit:cover; filter:brightness(0.7); }
 .overlay { position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(135,206,250,0.35); border-radius:15px; z-index:2; }
-
-.hero-content {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  z-index:3;
-  max-width:700px;
-  text-align:center;
-  color:#ffffff;
-  text-shadow:1px 1px 6px rgba(0,0,0,0.4);
-}
+.hero-content { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:3; max-width:700px; text-align:center; color:#ffffff; text-shadow:1px 1px 6px rgba(0,0,0,0.4);}
+.hero-content h1 { font-size:34px; margin-bottom:15px; text-shadow:2px 2px 8px rgba(0,0,0,0.6); }
+.hero-content p { font-size:16px; line-height:1.6; margin-bottom:20px; text-shadow:2px 2px 8px rgba(0,0,0,0.6); }
 
 /* ================= HERO LOGO & SCHOOL YEAR ================= */
 .hero-logo {
@@ -44,10 +35,9 @@ main { flex:1; }
   display: block;
   margin: 0 auto;
   position: relative;
-  top: 20px; /* slightly lower inside background */
+  top: 0px; /* slightly down inside background */
   background: #ffffff;
 }
-
 .hero-content .school-year {
   display: block;
   background: #ffffff;
@@ -56,12 +46,9 @@ main { flex:1; }
   border-radius: 25px;
   font-weight: 600;
   max-width: fit-content;
-  margin: 25px auto 20px auto; /* clear gap from logo */
+  margin: 15px auto 20px auto; /* proper spacing below logo */
   box-shadow: 0 4px 10px rgba(95,174,227,0.4);
 }
-
-.hero-content h1 { font-size:34px; margin-bottom:15px; text-shadow:2px 2px 8px rgba(0,0,0,0.6); }
-.hero-content p { font-size:16px; line-height:1.6; margin-bottom:20px; text-shadow:2px 2px 8px rgba(0,0,0,0.6); }
 
 /* ================= HERO BUTTON ALIGNMENT ================= */
 .hero-buttons {
@@ -131,11 +118,23 @@ main { flex:1; }
   .nav-links .login-link { margin-top:12px; padding-top:12px; border-top:1px solid rgba(255,255,255,0.3); font-weight:700; }
 
   /* MOBILE HERO FIX */
-  .hero-content { top:50%; left:50%; transform:translate(-50%, -50%); max-width:90%; text-align:center; }
+  .hero-content {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    text-align: center;
+  }
   .hero-content h1 { font-size:22px; line-height:1.2; }
   .hero-content p { font-size:14px; line-height:1.5; }
-  .hero-buttons { flex-direction:column; align-items:center; width:100%; gap:12px; margin-top:10px; }
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+    margin-top: 10px;
+  }
   .hero-buttons .btn { width:70%; text-align:center; }
-  .hero-logo { width:80px; height:80px; top:15px; }
-  .school-year { font-size:14px; padding:6px 12px; margin-top:20px; }
-                    }
+  .hero-logo { width:80px; height:80px; top:0px; }
+  .school-year { font-size:14px; padding:6px 12px; }
+              }
