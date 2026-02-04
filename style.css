@@ -33,12 +33,11 @@ main { flex:1; }
   border-radius: 50%;
   object-fit: cover;
   display: block;
-  margin: 0 auto 10px auto; /* space below logo for S.Y */
+  margin: 0 auto 10px auto;
   background-color: #ffffff;
   position: relative;
-  top: 40px; /* move logo slightly down inside background */
+  top: 70px; /* moved further down inside background */
 }
-
 .school-year {
   display: block;
   background: #ffffff;
@@ -50,19 +49,18 @@ main { flex:1; }
   margin: 0 auto 20px auto;
   box-shadow: 0 4px 10px rgba(95,174,227,0.4);
   position: relative;
-  top: 40px; /* align with logo */
+  top: 70px; /* align with new logo position */
 }
 
 /* ================= HERO BUTTON ALIGNMENT ================= */
 .hero-buttons {
   display: flex;
-  justify-content: center;  /* center horizontally */
-  align-items: center;      /* center vertically relative to each other */
-  gap: 20px;                /* space between buttons */
-  flex-wrap: wrap;          /* wrap nicely on smaller screens */
-  margin-top: 15px;         /* space below hero text/logo */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 15px;
 }
-
 .btn { padding:12px 24px; border-radius:25px; text-decoration:none; font-weight:600; transition:0.3s; }
 .primary { background:#ffffff;color:#5faee3; font-weight:700; box-shadow:0 4px 12px rgba(95,174,227,0.25);}
 .primary:hover { background:#5faee3; color:#ffffff; box-shadow:0 6px 16px rgba(0,0,0,0.25);}
@@ -130,14 +128,16 @@ main { flex:1; }
   }
   .hero-content h1 { font-size:22px; line-height:1.2; }
   .hero-content p { font-size:14px; line-height:1.5; }
+
+  .hero-logo { width:80px; height:80px; top:50px; } /* slightly down for mobile */
+  .school-year { top:50px; }
+
   .hero-buttons {
-    flex-direction: column; /* stack vertically */
-    align-items: center;    /* center horizontally */
-    width: 100%;            /* full width */
-    gap: 12px;              /* spacing between buttons */
-    margin-top: 10px;       /* spacing from text/logo */
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+    margin-top: 10px;
   }
   .hero-buttons .btn { width:70%; text-align:center; }
-  .hero-logo { width:80px; height:80px; top:30px; } /* move slightly down in mobile */
-  .school-year { font-size:14px; padding:6px 12px; top:30px; }
 }
